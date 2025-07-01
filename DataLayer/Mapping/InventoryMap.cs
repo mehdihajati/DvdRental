@@ -11,5 +11,8 @@ public class InventoryMap : IEntityTypeConfiguration<Inventory>
         builder.HasKey(x => x.Inventory_id);
         builder.Property(x => x.Last_update).HasColumnType("timestamp")
                 .HasDefaultValueSql("NOW()");
+        builder.HasMany(x => x.Rentals)
+                .WithOne(x => x.Inventory)
+                .HasForeignKey(x => x.inventory_id);
     }
 }

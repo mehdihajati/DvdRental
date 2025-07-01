@@ -16,6 +16,9 @@ public class CityMap : IEntityTypeConfiguration<City>
             .IsRequired();
         builder.Property(x => x.Last_update).HasColumnType("timestamp")
             .HasDefaultValueSql("NOW()");
+        builder.HasMany(x => x.Addresses)
+                .WithOne(x => x.City)
+                .HasForeignKey(x => x.City_id);
         
     }
 }

@@ -16,5 +16,11 @@ public class StaffMap : IEntityTypeConfiguration<Staff>
         builder.Property(x => x.UserName).HasMaxLength(30).IsRequired(true);
         builder.Property(x => x.Password).HasMaxLength(30).IsRequired(true);
         builder.Property(x => x.Picture).IsRequired(false);
+        builder.HasMany(x => x.Rentals)
+                .WithOne(x => x.Staff)
+                .HasForeignKey(x => x.Staff_id);
+        builder.HasMany(x => x.Payments)
+                .WithOne(x => x.Staff)
+                .HasForeignKey(x => x.Staff_id);
     }
 }

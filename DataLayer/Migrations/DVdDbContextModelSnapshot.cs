@@ -99,9 +99,6 @@ namespace DataLayer.Migrations
                     b.Property<int>("City_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("City_id1")
-                        .HasColumnType("integer");
-
                     b.Property<string>("District")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -124,7 +121,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("Address_id");
 
-                    b.HasIndex("City_id1");
+                    b.HasIndex("City_id");
 
                     b.ToTable("addresses", "Retntal");
                 });
@@ -168,9 +165,6 @@ namespace DataLayer.Migrations
                     b.Property<int>("Country_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Country_id1")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("Last_update")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
@@ -178,7 +172,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("City_id");
 
-                    b.HasIndex("Country_id1");
+                    b.HasIndex("Country_id");
 
                     b.ToTable("city", "Retntal");
                 });
@@ -222,9 +216,6 @@ namespace DataLayer.Migrations
                     b.Property<int>("Address_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Address_id1")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("Create_date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
@@ -253,14 +244,11 @@ namespace DataLayer.Migrations
                     b.Property<int>("Store_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Store_id1")
-                        .HasColumnType("integer");
-
                     b.HasKey("Customer_id");
 
-                    b.HasIndex("Address_id1");
+                    b.HasIndex("Address_id");
 
-                    b.HasIndex("Store_id1");
+                    b.HasIndex("Store_id");
 
                     b.ToTable("customer", "Retntal");
                 });
@@ -399,9 +387,6 @@ namespace DataLayer.Migrations
                     b.Property<int>("Film_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Film_id1")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("Last_update")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
@@ -410,14 +395,11 @@ namespace DataLayer.Migrations
                     b.Property<int>("Store_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Store_id1")
-                        .HasColumnType("integer");
-
                     b.HasKey("Inventory_id");
 
-                    b.HasIndex("Film_id1");
+                    b.HasIndex("Film_id");
 
-                    b.HasIndex("Store_id1");
+                    b.HasIndex("Store_id");
 
                     b.ToTable("Inventories", "Retntal");
                 });
@@ -459,9 +441,6 @@ namespace DataLayer.Migrations
                     b.Property<int>("Customer_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Customer_id1")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("Payment_Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp")
@@ -470,22 +449,16 @@ namespace DataLayer.Migrations
                     b.Property<int>("Rental_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Rental_id1")
-                        .HasColumnType("integer");
-
                     b.Property<int>("Staff_id")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Staff_id1")
                         .HasColumnType("integer");
 
                     b.HasKey("Payment_id");
 
-                    b.HasIndex("Customer_id1");
+                    b.HasIndex("Customer_id");
 
-                    b.HasIndex("Rental_id1");
+                    b.HasIndex("Rental_id");
 
-                    b.HasIndex("Staff_id1");
+                    b.HasIndex("Staff_id");
 
                     b.ToTable("Payments", "Retntal");
                 });
@@ -499,12 +472,6 @@ namespace DataLayer.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Rental_id"));
 
                     b.Property<int>("Customer_id")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Customer_id1")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Inventory_id")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Last_update")
@@ -521,19 +488,16 @@ namespace DataLayer.Migrations
                     b.Property<int>("Staff_id")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Staff_id1")
-                        .HasColumnType("integer");
-
                     b.Property<int>("inventory_id")
                         .HasColumnType("integer");
 
                     b.HasKey("Rental_id");
 
-                    b.HasIndex("Customer_id1");
+                    b.HasIndex("Customer_id");
 
-                    b.HasIndex("Inventory_id");
+                    b.HasIndex("Staff_id");
 
-                    b.HasIndex("Staff_id1");
+                    b.HasIndex("inventory_id");
 
                     b.ToTable("Rentals", "Retntal");
                 });
@@ -549,11 +513,7 @@ namespace DataLayer.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Address_id")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Address_id1")
+                    b.Property<int>("Address_id")
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
@@ -582,9 +542,6 @@ namespace DataLayer.Migrations
                     b.Property<string>("Picture")
                         .HasColumnType("text");
 
-                    b.Property<int>("StoreManagedStore_id")
-                        .HasColumnType("integer");
-
                     b.Property<int>("Store_id")
                         .HasColumnType("integer");
 
@@ -595,9 +552,9 @@ namespace DataLayer.Migrations
 
                     b.HasKey("Staff_id");
 
-                    b.HasIndex("Address_id1");
+                    b.HasIndex("Address_id");
 
-                    b.HasIndex("StoreManagedStore_id");
+                    b.HasIndex("Store_id");
 
                     b.ToTable("Staffs", "Retntal");
                 });
@@ -668,7 +625,7 @@ namespace DataLayer.Migrations
                 {
                     b.HasOne("DomainLayer.City", "City")
                         .WithMany("Addresses")
-                        .HasForeignKey("City_id1")
+                        .HasForeignKey("City_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -679,7 +636,7 @@ namespace DataLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Country", "Country")
                         .WithMany("Cities")
-                        .HasForeignKey("Country_id1")
+                        .HasForeignKey("Country_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -689,14 +646,14 @@ namespace DataLayer.Migrations
             modelBuilder.Entity("DomainLayer.Customer", b =>
                 {
                     b.HasOne("DomainLayer.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("Address_id1")
+                        .WithMany("Customer")
+                        .HasForeignKey("Address_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Store", "Store")
                         .WithMany("Customers")
-                        .HasForeignKey("Store_id1")
+                        .HasForeignKey("Store_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -750,13 +707,13 @@ namespace DataLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Film", "Film")
                         .WithMany("Inventories")
-                        .HasForeignKey("Film_id1")
+                        .HasForeignKey("Film_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Store", "Store")
                         .WithMany("Inventories")
-                        .HasForeignKey("Store_id1")
+                        .HasForeignKey("Store_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -768,20 +725,20 @@ namespace DataLayer.Migrations
             modelBuilder.Entity("DomainLayer.Payment", b =>
                 {
                     b.HasOne("DomainLayer.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("Customer_id1")
+                        .WithMany("Payments")
+                        .HasForeignKey("Customer_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Rental", "Rental")
                         .WithMany("Payments")
-                        .HasForeignKey("Rental_id1")
+                        .HasForeignKey("Rental_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Staff", "Staff")
                         .WithMany("Payments")
-                        .HasForeignKey("Staff_id1")
+                        .HasForeignKey("Staff_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -796,19 +753,19 @@ namespace DataLayer.Migrations
                 {
                     b.HasOne("DomainLayer.Customer", "Customer")
                         .WithMany("Rentals")
-                        .HasForeignKey("Customer_id1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DomainLayer.Inventory", "Inventory")
-                        .WithMany("Rentals")
-                        .HasForeignKey("Inventory_id")
+                        .HasForeignKey("Customer_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Staff", "Staff")
                         .WithMany("Rentals")
-                        .HasForeignKey("Staff_id1")
+                        .HasForeignKey("Staff_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Inventory", "Inventory")
+                        .WithMany("Rentals")
+                        .HasForeignKey("inventory_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -822,14 +779,14 @@ namespace DataLayer.Migrations
             modelBuilder.Entity("DomainLayer.Staff", b =>
                 {
                     b.HasOne("DomainLayer.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("Address_id1")
+                        .WithMany("Staffs")
+                        .HasForeignKey("Address_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Store", "StoreManaged")
                         .WithMany("Staffs")
-                        .HasForeignKey("StoreManagedStore_id")
+                        .HasForeignKey("Store_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -841,6 +798,13 @@ namespace DataLayer.Migrations
             modelBuilder.Entity("DomainLayer.Actor", b =>
                 {
                     b.Navigation("Film_Actors");
+                });
+
+            modelBuilder.Entity("DomainLayer.Address", b =>
+                {
+                    b.Navigation("Customer");
+
+                    b.Navigation("Staffs");
                 });
 
             modelBuilder.Entity("DomainLayer.Category", b =>
@@ -860,6 +824,8 @@ namespace DataLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Customer", b =>
                 {
+                    b.Navigation("Payments");
+
                     b.Navigation("Rentals");
                 });
 

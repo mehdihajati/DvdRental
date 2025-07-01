@@ -25,5 +25,11 @@ public class CustomerMap : IEntityTypeConfiguration<Customer>
         builder.Property(x => x.Last_update)
             .HasColumnType("timestamp")
             .HasDefaultValueSql("NOW()");
+        builder.HasMany(x => x.Rentals)
+                .WithOne(x => x.Customer)
+                .HasForeignKey(x => x.Customer_id);
+        builder.HasMany(x => x.Payments)
+                .WithOne(x => x.Customer)
+                .HasForeignKey(x => x.Customer_id);
     }
 }

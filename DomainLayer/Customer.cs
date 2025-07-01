@@ -15,4 +15,5 @@ public class Customer
     public Store Store { get; set; }
     public Address Address { get; set; }
     public ICollection<Rental> Rentals { get; set; }
+    public ICollection<Payment> Payments { get; set; }
 }

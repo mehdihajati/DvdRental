@@ -12,5 +12,8 @@ public class RentalMap : IEntityTypeConfiguration<Rental>
         builder.Property(x => x.Rental_Date)
                 .HasColumnType("timestamp")
                 .HasDefaultValueSql("NOW()");
+        builder.HasMany(x => x.Payments)
+                .WithOne(x => x.Rental)
+                .HasForeignKey(x => x.Rental_id);
     }
 }

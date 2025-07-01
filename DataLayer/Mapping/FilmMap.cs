@@ -9,7 +9,7 @@ public class FilmMap : IEntityTypeConfiguration<Film>
 {
     public void Configure(EntityTypeBuilder<Film> builder)
     {
-        
+
         builder.HasKey(x => x.Film_id);
         builder.Property(x => x.Title).HasMaxLength(90).IsRequired();
         builder.Property(x => x.Description).IsRequired().HasMaxLength(1500);
@@ -24,5 +24,10 @@ public class FilmMap : IEntityTypeConfiguration<Film>
         builder.HasOne(x => x.Language)
                 .WithMany(x => x.Films)
                 .HasForeignKey(x => x.Language_id);
+        builder.HasMany(x => x.Inventories)
+                .WithOne(x => x.Film)
+                .HasForeignKey(x => x.Film_id);
+        
+
     }
 }

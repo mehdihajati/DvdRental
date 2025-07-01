@@ -15,4 +15,6 @@ public class Address
     public DateTime Last_update { get; set; }
     // relations
     public City City { get; set; }
+    public ICollection<Customer> Customer { get; set; }
+    public ICollection<Staff> Staffs { get; set; }
 }

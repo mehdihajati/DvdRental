@@ -6,7 +6,7 @@ public class Staff
     public string First_name { get; set; }
     public string Last_name { get; set; }
     // foreign key start
-    public string Address_id { get; set; }
+    public int Address_id { get; set; }
     public int Store_id { get; set; }
     // foreign key end
     public string Email { get; set; }

@@ -17,5 +17,11 @@ public class AddressMap : IEntityTypeConfiguration<Address>
         builder.Property(x => x.Postal_code).HasMaxLength(10);
         builder.Property(x => x.Phone).HasMaxLength(20).IsRequired();
         builder.Property(x => x.Last_update).HasColumnType("timestamp").HasDefaultValueSql("NOW()");
+        builder.HasMany(x => x.Customer)
+                .WithOne(x => x.Address)
+                .HasForeignKey(x => x.Address_id);
+        builder.HasMany(x => x.Staffs)
+                .WithOne(x => x.Address)
+                .HasForeignKey(x => x.Address_id);
     }
 }
